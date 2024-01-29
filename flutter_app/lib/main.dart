@@ -33,96 +33,99 @@ class MyApp extends StatelessWidget {
 }
 
 // STATE MAWNAGEMENT using ChangeNotifier class which MyAppState is a class that extends it
+// MyAppState is responsible for managing the state of the application.
+// It extends ChangeNotifier to allow widgets to listen to changes in the state.
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-  var favorites = <WordPair>[];
-  final String backendUrl = 'http://localhost:3000/favorites';
+  var current = WordPair.random(); // Holds the current WordPair.
+  var favorites = <WordPair>[]; // List to store favorited WordPairs.
+  final String backendUrl = 'http://localhost:3000/favorites'; // URL of the backend server.
 
   MyAppState() {
-    fetchFavorites();
+    fetchFavorites(); // Fetch favorites from the server when the state is initialized.
   }
 
   void getNext() {
-    current = WordPair.random();
-    notifyListeners();
+    current = WordPair.random(); // Generate a new random WordPair.
+    notifyListeners(); // Notify listeners (widgets) that state has changed.
   }
 
-Future<void> fetchFavorites() async {
-  try {
-    final response = await http.get(Uri.parse(backendUrl));
-    if (response.statusCode == 200) {
-      List<dynamic> favs = json.decode(response.body)['favorites'];
-      favorites = favs.map((word) => WordPair(word, ' ')).toList();
-      print("Fetched Favorites: $favorites"); // Log fetched favorites
-      notifyListeners();
-    } else {
-      print("Server Error: ${response.statusCode}"); // Log server error
+  // Fetches favorites from the backend server.
+  Future<void> fetchFavorites() async {
+    try {
+      final response = await http.get(Uri.parse(backendUrl));
+      if (response.statusCode == 200) {
+        List<dynamic> favs = json.decode(response.body)['favorites'];
+        // Convert each word from the server into a WordPair.
+        // Note: The server sends words as a single string, hence the empty string for the second part.
+        favorites = favs.map((word) => WordPair(word, ' ')).toList();
+        print("Fetched Favorites: $favorites"); // Log fetched favorites.
+        notifyListeners(); // Update UI after fetching favorites.
+      } else {
+        print("Server Error: ${response.statusCode}"); // Log server error.
+      }
+    } catch (e) {
+      print("Network Error: $e"); // Log network error.
     }
-  } catch (e) {
-    print("Network Error: $e"); // Log network error
   }
-}
 
+  // Toggles the favorite status of the current WordPair.
+  void toggleFavorite() {
+    String currentWord = current.asLowerCase + ' '; // Convert the current WordPair to lowercase for comparison.
+    bool isAlreadyFavorite = favorites.any((wordPair) => wordPair.asLowerCase == currentWord);
+    print(currentWord); 
 
-void toggleFavorite() {
-  String currentWord = current.asLowerCase + ' ';
-
-  // Check if the current word is already a favorite
-  bool isAlreadyFavorite = favorites.any((wordPair) => wordPair.asLowerCase == currentWord);
-  print(currentWord); 
-
-  if (isAlreadyFavorite) {
-    // If it is, remove it from favorites
-    favorites.removeWhere((wordPair) => wordPair.asLowerCase == currentWord);
-    removeFavorite(current); // Remove from server
-    notifyListeners(); // Notify listeners about the change
-  } else {
-    // If it's not a favorite, add it
-    favorites.add(current);
-    addFavorite(current); // Add to server
-    notifyListeners(); // Notify listeners about the change
-  }
-}
-
-
-Future<void> addFavorite(WordPair word) async {
-  try {
-    final response = await http.post(
-      Uri.parse(backendUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'word': word.asPascalCase}),
-    );
-    if (response.statusCode == 201) {
-      print("Added Favorite: $word"); // Log added favorite
-      fetchFavorites(); // Refresh the favorites
+    if (isAlreadyFavorite) {
+      // If the word is already a favorite, remove it.
+      favorites.removeWhere((wordPair) => wordPair.asLowerCase == currentWord);
+      removeFavorite(current); // Remove from the server.
+      notifyListeners(); // Notify UI of the change.
     } else {
-      print("Server Error on Add: ${response.statusCode}"); // Log server error
+      // If it's not a favorite, add it.
+      favorites.add(current);
+      addFavorite(current); // Add to the server.
+      notifyListeners(); // Notify UI of the change.
     }
-  } catch (e) {
-    print("Network Error on Add: $e"); // Log network error
+  }
+
+  // Adds a WordPair to the favorites on the server.
+  Future<void> addFavorite(WordPair word) async {
+    try {
+      final response = await http.post(
+        Uri.parse(backendUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'word': word.asPascalCase}),
+      );
+      if (response.statusCode == 201) {
+        print("Added Favorite: $word"); // Log added favorite.
+        fetchFavorites(); // Refresh the favorites list.
+      } else {
+        print("Server Error on Add: ${response.statusCode}"); // Log server error.
+      }
+    } catch (e) {
+      print("Network Error on Add: $e"); // Log network error.
+    }
+  }
+
+  // Removes a WordPair from the favorites on the server.
+  Future<void> removeFavorite(WordPair word) async {
+    try {
+      final response = await http.delete(
+        Uri.parse(backendUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'word': word.asPascalCase}),
+      );
+      if (response.statusCode == 200) {
+        print("Removed Favorite: $word"); // Log removed favorite.
+        fetchFavorites(); // Refresh the favorites list.
+      } else {
+        print("Server Error on Remove: ${response.statusCode}"); // Log server error.
+      }
+    } catch (e) {
+      print("Network Error on Remove: $e"); // Log network error.
+    }
   }
 }
 
-
-Future<void> removeFavorite(WordPair word) async {
-  try {
-    final response = await http.delete(
-      Uri.parse(backendUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'word': word.asPascalCase}),
-    );
-    if (response.statusCode == 200) {
-      print("Removed Favorite: $word"); // Log removed favorite
-      fetchFavorites(); // Refresh the favorites
-    } else {
-      print("Server Error on Remove: ${response.statusCode}"); // Log server error
-    }
-  } catch (e) {
-    print("Network Error on Remove: $e"); // Log network error
-  }
-}
-
-}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -240,11 +243,8 @@ class FavoritesPage extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       children: favorites.map((pair) {
         // Store pair as a local variable and perform the split operation
-        print(pair);
         String pairFirst = pair.asString.split(regExp)[0];
         String pairSecond = pair.asString.split(regExp)[1];
-        print(pairFirst);
-        print(pairSecond);
 
         return ListTile(
           leading: Icon(Icons.favorite),

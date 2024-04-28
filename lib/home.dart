@@ -126,7 +126,7 @@ class TabPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 90,
+                  height: 50,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,19 +134,17 @@ class TabPage extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        padding: EdgeInsets.only(left: 15),
-                        child: const Text(
-                          'Today’s UV Index',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFFF5F5F5),
-                            fontSize: 25,
-                            fontFamily: 'Outfit',
-                            fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                      ),
+                          padding: EdgeInsets.only(left: 15),
+                          child: const Text(
+                            'Today’s UV Index',
+                            style: TextStyle(
+                              color: Color(0xFFF5F5F5),
+                              fontSize: 20,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w700,
+                              height: 0,
+                            ),
+                          )),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -155,28 +153,32 @@ class TabPage extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              '7 ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFFF5F5F5),
-                                fontSize: 20,
-                                fontFamily: 'Outfit',
-                                fontWeight:
-                                    FontWeight.w700, // Bold the number "7"
-                                height: 0,
+                            Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '7',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w700,
+                                      height: 0,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: ' (Moderate)',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            const Text(
-                              '(Moderate)',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFFF5F5F5),
-                                fontSize: 20,
-                                fontFamily: 'Outfit',
-                                height: 0,
-                              ),
-                            ),
+                            )
                           ],
                         ),
                       ),
@@ -203,16 +205,15 @@ class TabPage extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.only(left: 15),
                     child: const Text(
-                      'Types of Skin Cancer',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFFF5F5F5),
-                        fontSize: 25,
-                        fontFamily: 'Outfit',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
+                        'Types of Skin Cancer',
+                        style: TextStyle(
+                          color: Color(0xFFF5F5F5),
+                          fontSize: 20,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      )
                   ),
                 ),
                 const SizedBox(
@@ -290,7 +291,7 @@ class TabPage extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: 60,
+                            top: 45,
                             left: 25,
                             right: 10,
                             child: Text.rich(
@@ -328,19 +329,17 @@ class TabPage extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    child: const Text(
-                      'Articles',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFFF5F5F5),
-                        fontSize: 25,
-                        fontFamily: 'Outfit',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.only(left: 15),
+                      child: const Text(
+                        'Articles',
+                        style: TextStyle(
+                          color: Color(0xFFE7E9F1),
+                          fontSize: 20,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      )),
                 ),
                 const SizedBox(
                   height: 10,

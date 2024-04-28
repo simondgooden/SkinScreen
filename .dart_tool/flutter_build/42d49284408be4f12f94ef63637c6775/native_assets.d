@@ -1,1 +1,0 @@
- /Users/simongooden/Documents/Code/HackDavis2024/flutter-starter-app/.dart_tool/flutter_build/42d49284408be4f12f94ef63637c6775/native_assets.yaml: 

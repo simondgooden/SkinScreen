@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -170,7 +171,13 @@ class _LoginState extends State<Login> {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Home()),
+                    );
+                  },
                   child: const Text(
                     'Log In',
                     style: TextStyle(
@@ -290,4 +297,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-

@@ -72,51 +72,75 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 10, right: 5),
-              height: 100,
-              width: 100,
-              child: FloatingActionButton(
-                backgroundColor: Color(0xFF0F67FD),
-                elevation: 0,
+              margin: const EdgeInsets.only(top: 10, right: 2),
+              height: 70,
+              child: ElevatedButton(
                 onPressed: _pickImageFromCamera,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Container(
-                  width: 150, // Adjust the width of the image
-                  height: 150, // Adjust the height of the image
-                  child: Image.asset(
-                    'assets/Vector.png', // Replace 'assets/vector.png' with your image path
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF0F67FD),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      bottomLeft: Radius.circular(50),
+                    ),
                   ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.camera_alt, color: Colors.white, size: 30),
+                    Text(
+                      'Camera',
+                      style: TextStyle(
+                        color: Color(0xFFF5F5F5),
+                        fontSize: 14,
+                        fontFamily: 'Inter',
+                        //fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 10, left: 5),
-              height: 100,
-              width: 100,
-              child: FloatingActionButton(
-                backgroundColor: Color(0xFF0F67FD),
-                elevation: 0,
+              margin: const EdgeInsets.only(top: 10, left: 2),
+              height: 70,
+              child: ElevatedButton(
                 onPressed: _pickImageFromGallery,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Container(
-                  width: 150, // Adjust the width of the image
-                  height: 150, // Adjust the height of the image
-                  child: Image.asset(
-                    'assets/Vector.png', // Replace 'assets/vector.png' with your image path
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF0F67FD),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(50),
+                      bottomRight: Radius.circular(50),
+                    ),
                   ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.upload, color: Colors.white, size: 30),
+                    Text(
+                      'Upload',
+                      style: TextStyle(
+                        color: Color(0xFFF5F5F5),
+                        fontSize: 14,
+                        fontFamily: 'Inter',
+                        //fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ],
         ),
-        bottomNavigationBar: NavBar(
-          pageIndex: selectedTab,
+        bottomNavigationBar: CustomNavBar(
+          currentIndex: selectedTab,
           onTap: (index) {
+            print("Tapped index: $index");
             if (index == selectedTab) {
+              print("Already on this tab, popping to first route");
               items[index]
                   .navKey
                   .currentState
@@ -509,7 +533,13 @@ class TabPage extends StatelessWidget {
                         border:
                             Border.all(color: Colors.grey), // Add grey border
                         borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          begin: Alignment(0.63, -0.78),
+                          end: Alignment(-0.63, 0.78),
+                          colors: [Color(0xFF283255), Color(0xFF141A30)],
+                        ),
                       ),
+                      clipBehavior: Clip.antiAlias,
                       child: Stack(
                         children: [
                           Positioned(

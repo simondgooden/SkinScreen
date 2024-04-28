@@ -7,9 +7,8 @@ import 'package:http/http.dart' as http;
 void main() {
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +16,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // Here you directly define your theme settings
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 239, 206, 56)),
+        // Define the background color using scaffoldBackgroundColor
+        scaffoldBackgroundColor: Color(0xFF0A101F),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
       home: Login(),
     );
   }
 }
-

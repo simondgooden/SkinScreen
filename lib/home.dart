@@ -1,50 +1,130 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_app/navigation_bar.dart';
+import 'package:flutter_app/navigation_model.dart';
+import 'package:flutter_app/profile.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
+  final homeNavKey = GlobalKey<NavigatorState>();
+  final profileNavKey = GlobalKey<NavigatorState>();
+  int selectedTab = 0;
+  List<NavModel> items = [];
+
+  @override
+  void initState() {
+    super.initState();
+    items = [
+      NavModel(
+        page: const TabPage(tab: 1),
+        navKey: homeNavKey,
+      ),
+      NavModel(
+        page: const TabPage(tab: 2),
+        navKey: profileNavKey,
+      ),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () {
+        if (items[selectedTab].navKey.currentState?.canPop() ?? false) {
+          items[selectedTab].navKey.currentState?.pop();
+          return Future.value(false);
+        } else {
+          return Future.value(true);
+        }
+      },
+      child: Scaffold(
+        body: IndexedStack(
+          index: selectedTab,
+          children: items
+              .map((page) => Navigator(
+                    key: page.navKey,
+                    onGenerateInitialRoutes: (navigator, initialRoute) {
+                      return [
+                        MaterialPageRoute(builder: (context) => page.page)
+                      ];
+                    },
+                  ))
+              .toList(),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Container(
+          margin: const EdgeInsets.only(top: 10),
+          height: 64,
+          width: 64,
+          child: FloatingActionButton(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            onPressed: () => debugPrint("Add Button pressed"),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(width: 3, color: Colors.green),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: const Icon(
+              Icons.add,
+              color: Colors.green,
+            ),
+          ),
+        ),
+        bottomNavigationBar: NavBar(
+          pageIndex: selectedTab,
+          onTap: (index) {
+            if (index == selectedTab) {
+              items[index]
+                  .navKey
+                  .currentState
+                  ?.popUntil((route) => route.isFirst);
+            } else {
+              setState(() {
+                selectedTab = index;
+              });
+              // Open profile screen when profile icon is clicked
+              if (index == 1) {
+                items[index].navKey.currentState?.push(
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );
+              }
+              // Go back to home screen without animation when home icon is clicked
+              if (index == 0) {
+                items[index]
+                    .navKey
+                    .currentState
+                    ?.popUntil((route) => route.isFirst);
+              }
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class TabPage extends StatelessWidget {
+  final int tab;
+
+  const TabPage({Key? key, required this.tab}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          size: 35, // Adjust the size as needed
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              leading: Icon(Icons.access_time,
-                  size: 40), // Adjust the size as needed
-              title: const Text('Item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.access_time,
-                  size: 40), // Adjust the size as needed
-              title: const Text('Item 2'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
       body: Stack(
         children: [
           Center(
             child: Column(
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -91,7 +171,9 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                      SizedBox(width:20), // Adjust the space between circles as needed
+                      SizedBox(
+                          width:
+                              20), // Adjust the space between circles as needed
                       Column(
                         children: [
                           Container(
@@ -112,7 +194,9 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                      SizedBox(width:20), // Adjust the space between circles as needed
+                      SizedBox(
+                          width:
+                              20), // Adjust the space between circles as needed
                       Column(
                         children: [
                           Container(
@@ -133,7 +217,9 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                      SizedBox(width:20), // Adjust the space between circles as needed
+                      SizedBox(
+                          width:
+                              20), // Adjust the space between circles as needed
                       Column(
                         children: [
                           Container(
@@ -158,15 +244,46 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
-                Container(
-                  width: 300,
-                  height: 177,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9),
-                    borderRadius: BorderRadius.circular(31),
-                  ),
+                Stack(
+                  children: [
+                    Container(
+                      width: 378,
+                      height: 177,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 245, 245, 245),
+                        borderRadius: BorderRadius.circular(31),
+                      ),
+                    ),
+                    Positioned(
+                      top: 10, // Adjust the position as needed
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: Text(
+                          'Skin Health Tip',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            // Add more text styles as needed
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 60, // Adjust the position as needed
+                      left: 10,
+                      right: 10,
+                      child: Text(
+                        'Stay out of the sun\nAvoid the sun between 10 AM and 4 PM, when UV rays are strongest. You can also seek shade when your shadow is shorter than you are.',
+                        style: TextStyle(
+                          fontSize: 14,
+                          // Add more text styles as needed
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
@@ -176,30 +293,17 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code),
-            label: 'Scanner',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings), // Corrected icon for the fourth option
-            label: 'Settings', // Label for the new fourth button
-          ),
-        ],
-        currentIndex: 2,
-        selectedItemColor: Color.fromARGB(255, 112, 175, 238),
-        unselectedItemColor: Colors.grey,
-        //onTap: (index) => _onItemTapped(index, context),
-      ),
     );
+  }
+}
+
+class Page extends StatelessWidget {
+  final int tab;
+
+  const Page({super.key, required this.tab});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }

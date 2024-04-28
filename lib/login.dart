@@ -27,25 +27,12 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Stack(
         children: [
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 179,
-                  height: 177,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9),
-                    borderRadius: BorderRadius.circular(31),
-                    // image: DecorationImage(
-                    //   image: AssetImage('assets/Paisley.jpeg'), // Replace 'assets/penguin.jpeg' with the path to your image
-                    //   fit: BoxFit.cover, // You can adjust the fit as needed
-                    // ),
-                  ),
-                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -53,7 +40,7 @@ class _LoginState extends State<Login> {
                   'Welcome!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFF313131),
+                    color: Color(0xFFF5F5F5),
                     fontSize: 40,
                     fontFamily: 'Outfit',
                     fontWeight: FontWeight.w700,
@@ -61,35 +48,53 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 40,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                      left: 20.0,
-                      right:
-                          20.0), // Adds padding of 20 pixels to the left and right
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
+                    style: TextStyle(color: Color(0xFFF5F5F5)),
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Email'),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFF242E49),
+                      hintText: 'Email',
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 136, 136, 136)),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 20.0),
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0,
-                      right:
-                          20.0), // Adds padding of 20 pixels to the left and right
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
                     obscureText: showPassword,
+                    style: TextStyle(
+                        color: Color(0xFFF5F5F5)), // Change text color here
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFF242E49),
                       hintText: 'Password',
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 136, 136, 136)),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 20.0),
                       suffixIcon: IconButton(
-                        icon: Icon(showPassword
-                            ? Icons.visibility
-                            : Icons.visibility_off),
+                        icon: Icon(
+                          showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           setState(
                             () {
@@ -141,7 +146,7 @@ class _LoginState extends State<Login> {
                         const Text(
                           'Remember Me',
                           style: TextStyle(
-                            color: Color(0xFF323232),
+                            color: Color(0xFFF5F5F5),
                             fontSize: 15,
                             fontFamily: 'Outfit',
                             fontWeight: FontWeight.w400,
@@ -155,7 +160,7 @@ class _LoginState extends State<Login> {
                         Text(
                           'Forgot Password?',
                           style: TextStyle(
-                            color: Color(0xFF323232),
+                            color: Color(0xFFF5F5F5),
                             fontSize: 15,
                             fontFamily: 'Outfit',
                             fontWeight: FontWeight.bold,
@@ -168,43 +173,53 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => Home()),
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
                     );
                   },
-                  child: const Text(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Color(0xFF0F67FD), // Specify the background color here
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 170.0, // Adjust button width
+                      vertical: 24.0, // Add vertical padding to increase height
+                    ),
+                  ),
+                  child: Text(
                     'Log In',
                     style: TextStyle(
-                      color: Color(0xFF323232),
+                      color: Color(0xFFF5F5F5),
                       fontSize: 15,
                       fontFamily: 'Outfit',
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold, // Make the text bold
                       height: 0.06,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 45,
                 ),
                 Row(
                   children: [
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(left: 20.0, right: 15.0),
-                        child: const Divider(),
+                        child: const Divider(color: Color(0xFFF5F5F5)),
                       ),
                     ),
-                    const Text("or"),
+                    Text(
+                      "or continue with",
+                      style: TextStyle(color: Color(0xFFF5F5F5)),
+                    ),
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                        child: const Divider(),
+                        child: const Divider(color: Color(0xFFF5F5F5)),
                       ),
                     ),
                   ],
@@ -216,14 +231,17 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10), // Add horizontal padding
-                      child: IconButton(
-                        onPressed: () {
-                          //callAppleSignIn();
-                        },
-                        icon: Image.asset('assets/apple.png',
-                            width: 40, height: 40),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Color(0xFFF5F5F5),
+                          BlendMode.srcIn,
+                        ),
+                        child: Image.asset(
+                          'assets/apple.png',
+                          width: 40,
+                          height: 40,
+                        ),
                       ),
                     ),
                     Padding(
@@ -259,7 +277,7 @@ class _LoginState extends State<Login> {
                       child: Text(
                         "Don't have an account?",
                         style: TextStyle(
-                          color: Color(0xFF323232),
+                          color: Color(0xFFF5F5F5),
                           fontSize: 15,
                           fontFamily: 'Outfit',
                           fontWeight: FontWeight.w400,
@@ -278,7 +296,7 @@ class _LoginState extends State<Login> {
                         child: const Text(
                           "Sign up",
                           style: TextStyle(
-                            color: Color(0xFF323232),
+                            color: Color(0xFFF5F5F5),
                             fontSize: 15,
                             fontFamily: 'Outfit',
                             fontWeight: FontWeight.bold,

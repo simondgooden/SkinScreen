@@ -520,7 +520,7 @@ class TabPage extends StatelessWidget {
                   children: [
                     Container(
                       width: 410,
-                      height: 177,
+                      height: 110,
                       decoration: BoxDecoration(
                         color: Color(0xFF242E49),
                         borderRadius: BorderRadius.circular(20),
@@ -528,7 +528,7 @@ class TabPage extends StatelessWidget {
                     ),
                     Container(
                       width: 410, // Same width as the inner container
-                      height: 177, // Same height as the inner container
+                      height: 110, // Same height as the inner container
                       decoration: BoxDecoration(
                         border:
                             Border.all(color: Colors.grey), // Add grey border
@@ -551,12 +551,12 @@ class TabPage extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFFE7E9F1),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 22,
+                                fontSize: 16,
                               ),
                             ),
                           ),
                           Positioned(
-                            top: 45,
+                            top: 35,
                             left: 25,
                             right: 10,
                             child: Text.rich(
@@ -568,7 +568,7 @@ class TabPage extends StatelessWidget {
                                       color: Color(0xFFFFB04A),
                                       fontWeight:
                                           FontWeight.bold, // Make it bold
-                                      fontSize: 16,
+                                      fontSize: 12,
                                     ),
                                   ),
                                   TextSpan(
@@ -576,7 +576,7 @@ class TabPage extends StatelessWidget {
                                         'Avoid the sun between 10 AM and 4 PM, when UV rays are strongest. You can also seek shade when your shadow is shorter than you are.',
                                     style: TextStyle(
                                       color: Color(0xFFE7E9F1),
-                                      fontSize: 16,
+                                      fontSize: 12,
                                     ),
                                   ),
                                 ],

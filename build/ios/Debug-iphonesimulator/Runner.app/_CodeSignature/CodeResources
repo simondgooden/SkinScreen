@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		zKtEB25z+uDsR4V5cKhl7spR4+4=
+		cdCqjVeOeDvpZ8tpWVt9gyj08uo=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		jYFZwEPiD8EWdy3z8ObuJqr/Qms=
+		vEn9yCp/kRZSlOMUrE5oxvy6yEI=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		OIhZoF8XnF2IEPayM6yMl6rMzbw=
+		pvbCoZ+LS1mDL3paOTe2b8KM9vs=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		2zmBTTvkQ/DYHXbR9v3jEBpWjjc=
+		nMmzVWM4ynqJU2MskAtzx1NhBD4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/Rectangle1.png</key>
 		<data>
@@ -106,7 +106,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		uzsqMyFpu0JR88IU4qfUDCV5npU=
+		TW1iGUdV1cSw0LNQ0phrWQXi7ts=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -204,9 +204,29 @@
 		<data>
 		Ubat0LvE4LUgCwHeyl0Anx2vnzk=
 		</data>
+		<key>Frameworks/camera_avfoundation.framework/Info.plist</key>
+		<data>
+		fxAzXnojqvTh0yBpCjxisqYJfRg=
+		</data>
+		<key>Frameworks/camera_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<data>
+		Y6/Jzjzs1qYzuPdf/NKGxtrZ78Y=
+		</data>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation</key>
+		<data>
+		kgz89D/zKRXPNE26388ixO/tb9s=
+		</data>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/Info.plist</key>
+		<data>
+		4BXfYhpSBEarHjXtqSArSEzDd4I=
+		</data>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		65H5YRYvBWpCN/GOXw+cuUxt9ho=
+		F1TJw35u9DXTt7tnfiMZiT8xDIw=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -240,7 +260,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MDPfo9ISKUChOc2IRM+MtPUg5ekO3vJD3QU2/e4AQV0=
+			bbsv6Q0qOB7xJ9IcHm7Ol5eAFvEOy+PKfEmxvuz8P7s=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -289,7 +309,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h/AfTyYTl5x1L4cNS55XPc/QOoB2jh7TPIgSQ2nQl+8=
+			I5JW1ZWKyav+C3kNcFR8y+U8vF4VrOXHW3QyiBF4Iao=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -303,7 +323,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dhz+S4V+gmEMqsnQ34wbcwyUvRS9NpQSUmcE1txajpo=
+			JlDxlv4y4MNes15ob2rbQg1tCrrDktzw4ReBMd2Gluw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -331,7 +351,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bDI5NZeIbxCNb+2A9iqMlZaxPDirQyQ7SuHizMz3MjQ=
+			GevI39CupL8Xeo06m5EQn6+6BkpDer7MRROH2fxfVoY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/Rectangle1.png</key>
@@ -394,7 +414,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mfbhV4ltXzE/qSPRPEXixqsG0PcCVcw3r6aMhIK+PW0=
+			EcgfUwG5pw6VIU0KTgGpucfCbBF3owo/iNl/U06V3PM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
@@ -563,6 +583,41 @@
 			<key>hash2</key>
 			<data>
 			ZepykIMSjfzhwAcmupMrkaqvXkhza1ZE3TdHjl8odaw=
+			</data>
+		</dict>
+		<key>Frameworks/camera_avfoundation.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oRIOQ5XiMEWE3T/WML5YPxuCeqG2aitmCq+gwieh0lU=
+			</data>
+		</dict>
+		<key>Frameworks/camera_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			f5EzeFfIQ97mZU4se6ecCw++jh5H4VtQSJty0/A/GgY=
+			</data>
+		</dict>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X45mBtOVcXza699XDgjCqU00PgqxLe1zw+KJJ0P5rhc=
+			</data>
+		</dict>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pF/ky701hEpF+mB6NfH+i82Vdd7lB4tm94oqEs9fVLw=
+			</data>
+		</dict>
+		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 	</dict>

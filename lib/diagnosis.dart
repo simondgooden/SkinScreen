@@ -54,6 +54,23 @@ class _DiagnosisPageState extends State<DiagnosisPage> {
             ),
           ),
           SizedBox(height: 10),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Possible Conditions ',
+                style: TextStyle(
+                  color: Color(0xFFF5F5F5),
+                  fontSize: 20,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w700,
+                  height: 0,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
           Expanded(
             child: SingleChildScrollView(
               child: Center(

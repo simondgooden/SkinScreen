@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app/camera.dart';
 import 'package:flutter_app/navigation_bar.dart';
 import 'package:flutter_app/navigation_model.dart';
 import 'package:flutter_app/profile.dart';
@@ -66,7 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: FloatingActionButton(
             backgroundColor: Color(0xFF0F67FD),
             elevation: 0,
-            onPressed: () => debugPrint("Add Button pressed"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CameraScreen()),
+              );
+            },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
             ),

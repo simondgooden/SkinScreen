@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		Yb6JNl/MyjSfWfrLM9ZTxPG4dNM=
+		XYS6kAKpgPaV0zYwKizhFFDSG4o=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		oKlpp7emyyBR2X7lynpBjX+0cqk=
+		3ymbTx7CC+lwdpf8szyOd04sImQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		//+DVErw2DEouVxODUbIaFoKIxA=
+		3OV9fx7KY8W5LCreY+cy5au4rKM=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		cMDhLdSCmToyLNCsZZqS6NBRW0w=
+		L5y9oAZKIHKtlpq1AQ5Y+6LVMLw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -80,6 +80,10 @@
 		<data>
 		MRxU2D0mPZR4Y1Qpz1XCf7CyFYI=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/Rectangle72.png</key>
+		<data>
+		zw6SciChTJpTDecRAWDi4uR7pBY=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/Vector.png</key>
 		<data>
 		ofig8yip/xeF3VFlvPZnnJF9uQc=
@@ -96,6 +100,18 @@
 		<data>
 		25sDuQ07MhlhIxdHj3LHduzVZSQ=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/happy.png</key>
+		<data>
+		1e8bM3ThqINGNRg6tIveHOPaze0=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/megaphone.png</key>
+		<data>
+		RjnUK+qLSEzhQN0xw+4W1kCL/R4=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/scan.png</key>
+		<data>
+		pya9/KXduHaLWDIoayNoowVgFu0=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -106,7 +122,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		HpOlb0WbTTBimcnivLB/KAu7se0=
+		wJ/jGt0odC9T6dOvcN0fCoLlBE0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -214,7 +230,7 @@
 		</data>
 		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation</key>
 		<data>
-		+NWyxAJsMqXKXhD35NqPp/MSK+0=
+		l0mc4h6gzAgTsmKG70WglKndrhc=
 		</data>
 		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/Info.plist</key>
 		<data>
@@ -329,7 +345,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			P37+Feu09LbFXS+b8i02bbxLxDjE1wOtcOYgX/Ouz8s=
+			ANlAwdUdLA5Ra8+5bZruXkRQ1YsM5Wl7uejzITD/HjU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -343,21 +359,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pVyxPVmCbuAdY6+Ddasaacd7Ag3xNr+UR40JPzfGTww=
+			P7mJakjNmwum0VaUnjdMiniCn5lritWOQQluHJ3k0s8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FxsND5Blo8uUTsmZjQgke2ZilvWQCyswU0OGyXN4AuM=
+			Yc4eENKR+ENOAuYG89vUh7zynyyZZFK49LuXVaFQ5QI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MWqoDD1rNVqReYaKtGp7SbJcIOx+MGHOt1LP3gXBCkI=
+			bIH08SgU/gRvI8CWhtC/7pXu33bWXPzTPm7rr/p681I=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -388,6 +404,13 @@
 			hQjPx5puaqnxnV/dPwn9Ep69Bfc9aCqx8eN27UmqlnE=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/Rectangle72.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MWko/gwjqCP6sUJLVWt23t95OuCvD6wcYmZH9hovQbU=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/Vector.png</key>
 		<dict>
 			<key>hash2</key>
@@ -416,6 +439,27 @@
 			ycdKnzLczrIKuOjtenCM5Zrna898QK3UcQU83x0zOhg=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/happy.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			w+0zVhOgtMcNvp/Upxxvv6HyYvfnOv8Wwvl/oQmIA3U=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/megaphone.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TfgyVJOhdQp+lN+NYDbufgeEEIo+ESCEh8NXTp8jGcA=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/scan.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IrAsOwXXSiWJnKCGvRdTKSiF2fxmfa6MvaIo9c/MALM=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -434,7 +478,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7D9VMgJwGF+dEGceUlxVd8Z69vyKz9yALgootyd5czI=
+			2mya7KiKnlSVhIPtQ6ZgRA/sydGpKVYjGCHzYyjetXo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
@@ -623,7 +667,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S8iKahd0txqp4wd0xdngN3b91KDlwdl/R6Mjte41tvM=
+			VEpxQRoeQ8jXMUnQxuwaMBQbVn2rSZzAJ06ghHV6yEc=
 			</data>
 		</dict>
 		<key>Frameworks/camera_avfoundation.framework/camera_avfoundation_privacy.bundle/Info.plist</key>

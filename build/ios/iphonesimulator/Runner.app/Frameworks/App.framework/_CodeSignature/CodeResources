@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		//+DVErw2DEouVxODUbIaFoKIxA=
+		3OV9fx7KY8W5LCreY+cy5au4rKM=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		cMDhLdSCmToyLNCsZZqS6NBRW0w=
+		L5y9oAZKIHKtlpq1AQ5Y+6LVMLw=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -32,6 +32,10 @@
 		<data>
 		MRxU2D0mPZR4Y1Qpz1XCf7CyFYI=
 		</data>
+		<key>flutter_assets/assets/Rectangle72.png</key>
+		<data>
+		zw6SciChTJpTDecRAWDi4uR7pBY=
+		</data>
 		<key>flutter_assets/assets/Vector.png</key>
 		<data>
 		ofig8yip/xeF3VFlvPZnnJF9uQc=
@@ -48,6 +52,18 @@
 		<data>
 		25sDuQ07MhlhIxdHj3LHduzVZSQ=
 		</data>
+		<key>flutter_assets/assets/happy.png</key>
+		<data>
+		1e8bM3ThqINGNRg6tIveHOPaze0=
+		</data>
+		<key>flutter_assets/assets/megaphone.png</key>
+		<data>
+		RjnUK+qLSEzhQN0xw+4W1kCL/R4=
+		</data>
+		<key>flutter_assets/assets/scan.png</key>
+		<data>
+		pya9/KXduHaLWDIoayNoowVgFu0=
+		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -58,7 +74,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		HpOlb0WbTTBimcnivLB/KAu7se0=
+		wJ/jGt0odC9T6dOvcN0fCoLlBE0=
 		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -75,14 +91,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FxsND5Blo8uUTsmZjQgke2ZilvWQCyswU0OGyXN4AuM=
+			Yc4eENKR+ENOAuYG89vUh7zynyyZZFK49LuXVaFQ5QI=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MWqoDD1rNVqReYaKtGp7SbJcIOx+MGHOt1LP3gXBCkI=
+			bIH08SgU/gRvI8CWhtC/7pXu33bWXPzTPm7rr/p681I=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -113,6 +129,13 @@
 			hQjPx5puaqnxnV/dPwn9Ep69Bfc9aCqx8eN27UmqlnE=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/Rectangle72.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MWko/gwjqCP6sUJLVWt23t95OuCvD6wcYmZH9hovQbU=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/Vector.png</key>
 		<dict>
 			<key>hash2</key>
@@ -141,6 +164,27 @@
 			ycdKnzLczrIKuOjtenCM5Zrna898QK3UcQU83x0zOhg=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/happy.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			w+0zVhOgtMcNvp/Upxxvv6HyYvfnOv8Wwvl/oQmIA3U=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/megaphone.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TfgyVJOhdQp+lN+NYDbufgeEEIo+ESCEh8NXTp8jGcA=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/scan.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IrAsOwXXSiWJnKCGvRdTKSiF2fxmfa6MvaIo9c/MALM=
+			</data>
+		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -159,7 +203,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7D9VMgJwGF+dEGceUlxVd8Z69vyKz9yALgootyd5czI=
+			2mya7KiKnlSVhIPtQ6ZgRA/sydGpKVYjGCHzYyjetXo=
 			</data>
 		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>

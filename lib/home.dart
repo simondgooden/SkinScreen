@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
+//import 'package:flutter_app/camera.dart';
 import 'package:flutter_app/navigation_bar.dart';
 import 'package:flutter_app/navigation_model.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_app/profile.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'diagnosis.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final profileNavKey = GlobalKey<NavigatorState>();
   int selectedTab = 0;
   List<NavModel> items = [];
+  File? image;
 
   @override
   void initState() {
@@ -59,25 +68,50 @@ class _HomeScreenState extends State<HomeScreen> {
               .toList(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          margin: const EdgeInsets.only(top: 10),
-          height: 100,
-          width: 100,
-          child: FloatingActionButton(
-            backgroundColor: Color(0xFF0F67FD),
-            elevation: 0,
-            onPressed: () => debugPrint("Add Button pressed"),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Container(
-              width: 150, // Adjust the width of the image
-              height: 150, // Adjust the height of the image
-              child: Image.asset(
-                'assets/Vector.png', // Replace 'assets/vector.png' with your image path
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 10, right: 5),
+              height: 100,
+              width: 100,
+              child: FloatingActionButton(
+                backgroundColor: Color(0xFF0F67FD),
+                elevation: 0,
+                onPressed: _pickImageFromCamera,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Container(
+                  width: 150, // Adjust the width of the image
+                  height: 150, // Adjust the height of the image
+                  child: Image.asset(
+                    'assets/Vector.png', // Replace 'assets/vector.png' with your image path
+                  ),
+                ),
               ),
             ),
-          ),
+            Container(
+              margin: const EdgeInsets.only(top: 10, left: 5),
+              height: 100,
+              width: 100,
+              child: FloatingActionButton(
+                backgroundColor: Color(0xFF0F67FD),
+                elevation: 0,
+                onPressed: _pickImageFromGallery,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Container(
+                  width: 150, // Adjust the width of the image
+                  height: 150, // Adjust the height of the image
+                  child: Image.asset(
+                    'assets/Vector.png', // Replace 'assets/vector.png' with your image path
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         bottomNavigationBar: NavBar(
           pageIndex: selectedTab,
@@ -91,9 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 selectedTab = index;
               });
-              // Open profile screen when profile icon is clicked
+              // Open profile screen without animation when profile icon is clicked
               if (index == 1) {
-                items[index].navKey.currentState?.push(
+                items[index].navKey.currentState?.pushReplacement(
                       MaterialPageRoute(builder: (context) => ProfileScreen()),
                     );
               }
@@ -108,6 +142,58 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
+    );
+  }
+
+  void _pickImageFromGallery() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      await _processImage(imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  void _pickImageFromCamera() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      await _processImage(imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  Future<void> _processImage(File imageTemp) async {
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse('https://cddb-128-120-27-120.ngrok-free.app/upload'),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath('image', imageTemp.path),
+    );
+    var response = await request.send();
+    if (response.statusCode == 200) {
+      String predictions = await response.stream.bytesToString();
+      Map<String, dynamic> output = json.decode(predictions);
+      List<dynamic> diagnoses = output['result'];
+
+      _navigateToDiagnosisScreen(diagnoses, imageTemp);
+    } else {
+      print('HTTP request failed with status: ${response.statusCode}');
+    }
+    setState(() => image = imageTemp);
+  }
+
+  void _navigateToDiagnosisScreen(diagnoses, imageTemp) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              DiagnosisPage(conditions: diagnoses, image: imageTemp)),
     );
   }
 }
@@ -126,7 +212,7 @@ class TabPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 70,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,13 +284,13 @@ class TabPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    child: const Text(
+                      padding: EdgeInsets.only(left: 15),
+                      child: const Text(
                         'Types of Skin Cancer',
                         style: TextStyle(
                           color: Color(0xFFF5F5F5),
@@ -213,45 +299,194 @@ class TabPage extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           height: 0,
                         ),
-                      )
-                  ),
+                      )),
                 ),
                 const SizedBox(
                   height: 25,
                 ),
                 Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 10),
-                        _buildCircle('AKEIC', () {
-                          print('Button tapped: AKEIC');
-                        }),
-                        SizedBox(width: 15),
-                        _buildCircle('BCC', () {
-                          print('Button tapped: BCC');
-                        }),
-                        SizedBox(width: 15),
-                        _buildCircle('BKL', () {
-                          print('Button tapped: BCC');
-                        }),
-                        SizedBox(width: 15),
-                        _buildCircle('DF', () {
-                          print('Button tapped: BCC');
-                        }),
-                        SizedBox(width: 15),
-                        _buildCircle('MEL', () {
-                          print('Button tapped: BCC');
-                        }),
-                        SizedBox(width: 15),
-                        _buildCircle('NV', () {
-                          print('Button tapped: BCC');
-                        }),
-                        // Repeat for other circles
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(width: 15),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => AiResults()),
+                              // );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Bowen’s Disease',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Basal Cell Carcinoma',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ), // Add space between the texts
+                        ],
+                      ),
+                      SizedBox(height: 10), // Add a space between the rows
+                      Row(
+                        children: [
+                          SizedBox(width: 15),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Benign Keratosis',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Dermatofibroma',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10), // Add space between the texts
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Melanoma',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10), // Add a space between the rows
+                      Row(
+                        children: [
+                          SizedBox(width: 15),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Melanocytic Nevi',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to desired page
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFF242E49),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Text(
+                                'Vascular Lesions',
+                                style: TextStyle(
+                                  color: Color(0xFFF5F5F5),
+                                  fontSize: 12,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -500,33 +735,31 @@ class Page extends StatelessWidget {
   }
 }
 
-Widget _buildCircle(String text, VoidCallback onTap) {
-  return Column(
-    children: [
-      GestureDetector(
-        onTap: onTap,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xFF242E49),
-              ),
-            ),
-            Text(
-              text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+Widget _buildCircle(BuildContext context, String label, Route<dynamic> route) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(context, route);
+    },
+    child: Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFF242E49),
+          ),
         ),
-      ),
-    ],
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
   );
 }

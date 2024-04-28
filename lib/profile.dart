@@ -9,185 +9,414 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 200,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    child: const Text(
-                      'Types of Skin Cancer',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF313131),
-                        fontSize: 30,
-                        fontFamily: 'Outfit',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
+      body: Stack(children: [
+        Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 70,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                        padding: EdgeInsets.only(left: 15),
+                        child: const Text(
+                          'Hello, Simon Gooden',
+                          style: TextStyle(
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 26,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
+                            height: 0,
+                          ),
+                        )),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Placeholder for icon, you can replace this with your icon widget
+                        Icon(
+                          Icons.edit,
+                          color: Color(0xFF0F67FD), // Match the color with text
+                        ),
+                        SizedBox(
+                            width:
+                                0), // Adjust the width as needed for spacing between icon and text
+                        Text(
+                          'Edit',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF0F67FD),
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                            height: 0,
+                          ),
+                        ),
+                        SizedBox(
+                            width: 16), // Add padding to the right of the text
+                      ],
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment
-                        .center, // Center the circles horizontally
+                ],
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.blue,
-                              // You can customize other properties of the CircleAvatar as needed
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Text 1',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // Add more text styles as needed
-                            ),
-                          ),
-                        ],
+                      Image.asset(
+                        'assets/scan.png',
+                        width: 60, // Adjust the width of the image as needed
+                        height: 60, // Adjust the height of the image as needed
                       ),
                       SizedBox(
-                          width:
-                              20), // Adjust the space between circles as needed
-                      Column(
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.red,
-                              // You can customize other properties of the CircleAvatar as needed
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Text 2',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // Add more text styles as needed
-                            ),
-                          ),
-                        ],
+                          height:
+                              4), // Adjust the height for spacing between image and text
+                      Text(
+                        '8',
+                        style: TextStyle(
+                          color: Color(0xFFFFB04A),
+                          fontSize: 30,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
                       ),
                       SizedBox(
-                          width:
-                              20), // Adjust the space between circles as needed
-                      Column(
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.green,
-                              // You can customize other properties of the CircleAvatar as needed
-                            ),
+                        width: 94,
+                        child: Text(
+                          'Scans completed',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
                           ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Text 3',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // Add more text styles as needed
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                          width:
-                              20), // Adjust the space between circles as needed
-                      Column(
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.yellow,
-                              // You can customize other properties of the CircleAvatar as needed
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Text 4',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // Add more text styles as needed
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Stack(
-                  children: [
-                    Container(
-                      width: 378,
-                      height: 177,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 245, 245, 245),
-                        borderRadius: BorderRadius.circular(31),
+                  SizedBox(
+                      width:
+                          40), // Add flexible space between the first and second images
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/megaphone.png',
+                        width: 60, // Adjust the width of the image as needed
+                        height: 60, // Adjust the height of the image as needed
                       ),
-                    ),
-                    Positioned(
-                      top: 10, // Adjust the position as needed
-                      left: 0,
-                      right: 0,
-                      child: Center(
+                      SizedBox(
+                          height:
+                              4), // Adjust the height for spacing between image and text
+                      Text(
+                        '2',
+                        style: TextStyle(
+                          color: Color(0xFFFFB04A),
+                          fontSize: 30,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 94,
                         child: Text(
-                          'Skin Health Tip',
+                          'Need Attention',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            // Add more text styles as needed
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                      width:
+                          40), // Add flexible space between the second and third images
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/happy.png',
+                        width: 60, // Adjust the width of the image as needed
+                        height: 60, // Adjust the height of the image as needed
+                      ),
+                      SizedBox(
+                          height:
+                              4), // Adjust the height for spacing between image and text
+                      Text(
+                        '6',
+                        style: TextStyle(
+                          color: Color(0xFFFFB04A),
+                          fontSize: 30,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 94,
+                        child: Text(
+                          'Do Not Need Attention',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: SizedBox(
+                      width: 200,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text(
+                          'Scans History',
+                          style: TextStyle(
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
+                            height: 0,
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 60, // Adjust the position as needed
-                      left: 10,
-                      right: 10,
-                      child: Text(
-                        'Stay out of the sun\nAvoid the sun between 10 AM and 4 PM, when UV rays are strongest. You can also seek shade when your shadow is shorter than you are.',
-                        style: TextStyle(
-                          fontSize: 14,
-                          // Add more text styles as needed
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Placeholder for icon, you can replace this with your icon widget
+                        Text(
+                          'Sort',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFFF5F5F5),
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                            height: 0,
+                          ),
                         ),
+                        SizedBox(width: 0),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Color(0xFFF5F5F5), // Match the color with text
+                        ),
+                        SizedBox(
+                            width: 16), // Add padding to the right of the text
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 400,
+                height: 200,
+                padding: const EdgeInsets.all(20),
+                decoration: ShapeDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment(0.63, -0.78),
+                    end: Alignment(-0.63, 0.78),
+                    colors: [Color(0xFF283255), Color(0xFF141A30)],
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment
+                      .start, // Change this to CrossAxisAlignment.start
+                  children: [
+                    Container(
+                      width: 143,
+                      height: 143,
+                      decoration: ShapeDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle72.png"),
+                          fit: BoxFit.fill,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 18),
+                    Container(
+                      width: 162,
+                      height: 150,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 147,
+                                  child: Text(
+                                    'Simon Skin',
+                                    style: TextStyle(
+                                      color: Color(0xFFF5F5F5),
+                                      fontSize: 16,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w700,
+                                      height: 0,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 151,
+                                  child: Text(
+                                    '04/27/2024',
+                                    style: TextStyle(
+                                      color: Color(0xFFF5F5F5),
+                                      fontSize: 14,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 19),
+                          Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 147,
+                                        child: Text(
+                                          'Result',
+                                          style: TextStyle(
+                                            color: Color(0xFFF5F5F5),
+                                            fontSize: 14,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w700,
+                                            height: 0,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 162,
+                                        child: Text(
+                                          'No signs of symptoms',
+                                          style: TextStyle(
+                                            color: Color(0xFFF5F5F5),
+                                            fontSize: 14,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w400,
+                                            height: 0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Container(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 147,
+                                        child: Text(
+                                          'Level of Concern',
+                                          style: TextStyle(
+                                            color: Color(0xFFF5F5F5),
+                                            fontSize: 14,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w700,
+                                            height: 0,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 162,
+                                        child: Text(
+                                          'Does not need attention',
+                                          style: TextStyle(
+                                            color: Color(0xFFF5F5F5),
+                                            fontSize: 14,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w400,
+                                            height: 0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }

@@ -236,7 +236,7 @@ class TabPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 70,
+                  height: 50,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
